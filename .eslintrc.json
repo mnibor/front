@@ -1,3 +1,53 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": [
+		"plugin:prettier/recommended",
+		"next/core-web-vitals",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"plugins": [
+		"@typescript-eslint",
+		"eslint-plugin-import-helpers",
+		"react-hooks"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2021,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"import-helpers/order-helpers": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": [
+					["/^@next/", "module"],
+					"/^@/styles/",
+					"/^@/components/",
+					"/^@/lib/",
+					["parent", "sibling", "index"]
+				]
+			}
+		],
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{ "argsIgnorePattern": "^_" }
+		],
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/consistent-type-imports": [
+			"error",
+			{ "prefer": "type-imports" }
+		],
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": "error",
+		"import/no-extraneous-dependencies": "off",
+		"import/no-unresolved": "off",
+		"no-unused-vars": "off",
+		"no-nested-ternary": "off",
+		"no-unused-expressions": "off",
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn"
+	}
 }
